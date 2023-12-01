@@ -83,7 +83,7 @@
                                 <br>
                                 <br>
 
-                                <a href="{{ route('register') }}" style="text-decoration:none; color: #fff;">Cadastrar</a>
+                                <a href="{{ route('createregister') }}" style="text-decoration:none; color: #fff;">Cadastrar</a>
                                 
                             </div>
                         </form>

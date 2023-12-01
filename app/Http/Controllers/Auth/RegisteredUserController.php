@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Product;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -19,9 +20,11 @@ class RegisteredUserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function createRegister()
     {
         $roles = Role::all();
+        #$products = Product::all();
+       
         return view('auth.register', compact('roles'));
     }
 
@@ -33,7 +36,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function storeRegister(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -46,13 +49,20 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        $r = "socorro";
 
-        $user->attachRole('user');
+        
+
+     #   $user->attachRole('user');
+        
 
         $user->syncRoles(explode(',', $request->roles));
 
         Auth::login($user);
+       # dd($r);
+        
+        return redirect()->route('displayproducts');
 
-        return redirect(RouteServiceProvider::HOME);
+       # return redirect(RouteServiceProvider::HOME);
     }
 }

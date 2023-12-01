@@ -12,7 +12,7 @@
                 <p>Cadastrar</p>
             </div>
 
-            <form method="POST" action="{{ route('register') }}" class="main-form text-center">
+            <form method="POST" action="{{ route('storeregister') }}" class="main-form text-center">
                 @csrf
 
                 <!-- Name -->
@@ -73,7 +73,7 @@
                     <br>
                     <br>
 
-                    <x-button class="btn btn-success">
+                    <x-button class="btn btn-success" type="submit">
                         {{ __('Cadastrar') }}
                     </x-button>
                 </div>
