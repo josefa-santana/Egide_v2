@@ -12,17 +12,19 @@
 </head>
 <body>
 <div>
-  <nav class="bg-gray-800">
+  <nav class="bg-gray-800">  
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-center h-16">
         <div class="flex items-center">
           <div class="hidden md:block">
             <div class="flex items-baseline">
-              <a href="{{config('laratrust.panel.go_back_route')}}" class="nav-button">← Voltar</a>
+             <!-- <a href="{{config('laratrust.panel.go_back_route')}}" class="nav-button">← Voltar</a>-->
+             <a href="{{ route('report') }}" class="nav-button">← Voltar</a>
               <a
                 href="{{ route('laratrust.roles-assignment.index') }}"
+                
                 class="ml-4 {{ request()->is('*roles-assigment*') ? 'nav-button-active' : 'nav-button' }}"
-              >
+              > 
                Atribuição de Funções e Permissões
               </a>
               <a
