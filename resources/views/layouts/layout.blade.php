@@ -175,7 +175,7 @@
                             </a>
                             <ul class="dropdown-menu text-small">
                                 @if (auth()->user()->hasRole("admin") == "admin")
-                                    <li><hr class="dropdown-divider"></li>
+                                  
                                     <li><a class="dropdown-item" href="{{ route('configurations') }}">Configurações</a></li>
                                 @else
                                     <li hidden><a class="dropdown-item" href="{{ route('configurations') }}">Configurações</a></li>

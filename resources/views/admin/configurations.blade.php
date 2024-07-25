@@ -15,7 +15,7 @@
             </a>
         </li>
         <li class="breadcrumb-item">
-            <a class="link-body-emphasis fw-semibold text-decoration-none" href="#">Produtos</a>
+            <a class="link-body-emphasis fw-semibold text-decoration-none" href="{{ route('displayproducts') }}">Vendas</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
             Configurações

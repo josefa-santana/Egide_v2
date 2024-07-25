@@ -71,7 +71,8 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
 
     Route::controller(ReportController::class)->group(function(){
         Route::get('/report', 'Index')->name('report');
-        Route::get('/gerar-pdf', 'GerarPDF')->name('gerarpdf');
+        Route::post('/gerar-pdf', 'GerarPDF')->name('gerarpdf');
+        Route::post('/save-chart', 'saveChart')->name('savechart');
 
     });
 

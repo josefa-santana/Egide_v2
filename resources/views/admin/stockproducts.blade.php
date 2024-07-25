@@ -69,7 +69,7 @@
             <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
                 <p>Estoque total  -  {{ $total }}</p>
                 <p class="mb-0">
-                  Valor em estoque  -  {{ $valor_total }}
+                  Valor em estoque  -  R$ {{ number_format($valor_total, 2, ',', '.') }}
                 </p>
               </footer>
 

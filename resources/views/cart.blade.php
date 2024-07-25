@@ -161,7 +161,7 @@ use MercadoPago\SDK;
             <br>
 
 
-        <h5>Valor total: R$ {{ number_format(\Cart::getTotal(), 2, ',', '.') }}</h5>
+        <h5 style="margin-left:50px;">Valor total: R$ {{ number_format(\Cart::getTotal(), 2, ',', '.') }}</h5>
         @endif
 
     <br>

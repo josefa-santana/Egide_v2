@@ -1,6 +1,8 @@
 @extends('layouts.layout')
 @section('titulo', 'Produtos')
 @section('content')
+
+
 <style>
     .card-outer {
         display: flex;
@@ -28,11 +30,22 @@
 
 </style>
 
-<head>
-    <style>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-chevron p-3 bg-body-tertiary rounded-3">
+        <li class="breadcrumb-item">
+            <a class="link-body-emphasis" href="#">
+                <i class="bi bi-house-door-fill"></i>
+                <span class="visually-hidden">Home</span>
+            </a>
+        </li>
+        <li class="breadcrumb-item">
+            <a class="link-body-emphasis fw-semibold text-decoration-none" href="#">Produtos</a>
+        </li>
+    </ol>
+</nav>
+<!---->
 
-    </style>
-</head>
+
 
 <body>
 
@@ -42,9 +55,6 @@
                 <a href="{{ route('createproduct') }}">
                     <p style="text-align:center;color:aliceblue;">
                         <b>Cadastrar Produto</b>
-                        <b>
-                            <i class="bi bi-search"></i>
-                        </b>
 
                     </p>
                 </a>

@@ -2,10 +2,7 @@
 @section('titulo', 'Produtos')
 @section('subtitulo', 'Consultar produto')
 @section('content')
-
-
 <!-- BREADSCRUMBS -->
-
 <style>
     .primary {
         color: black;
@@ -21,7 +18,7 @@
             </a>
         </li>
         <li class="breadcrumb-item">
-            <a class="link-body-emphasis fw-semibold text-decoration-none" href="#">Produtos</a>
+            <a class="link-body-emphasis fw-semibold text-decoration-none" href="{{ route('indexproducts') }}">Produtos</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
             Consultar produto
@@ -31,7 +28,6 @@
 <!---->
 
 <div class="page-content">
-
     <!-- ERRORS MESSAGE -->
     @if(session()->has('message'))
     <div class="alert alert-success">
@@ -99,8 +95,7 @@
                                                 <button type="button" class="btn btn-danger"
                                                     data-bs-dismiss="modal">Cancelar</button>
                                                 <button type="button" class="btn btn-success">
-                                                    <a href="{{ route('deleteproduct', $produto->id) }}"
-                                                        style="color:black;">
+                                                    <a href="{{ route('deleteproduct', $produto->id) }}" style="color: white;">
                                                         Sim
                                                     </a>
                                                 </button>

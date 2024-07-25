@@ -22,8 +22,7 @@
 <!-- ERROR MESSAGES -->
 <div class="page-content">
 
-  <button class="btn btn-success" style="margin-left: 20px;">Gerar relatório</button>
-  <a href="{{ route('gerarpdf') }}" class="btn btn-success btn-lg">Gerar PDF</a>
+  <button class="btn btn-success btn-lg" onclick="generatePdf()">Gerar PDF</button>  
 
 
   <div class="cards">
@@ -76,6 +75,8 @@
           <h5 class="center"> Relação de produtos</h5>
             <canvas id="myChart" width="400" height="150"></canvas>
             <script>
+              const quantUser = @json($user);
+       
               const prodNome = {!! json_encode($prodName) !!};
               console.log(prodNome);
               const qtdStockP = {!! json_encode($qtdStockP) !!};
@@ -97,8 +98,39 @@
               }
               });
           }, true);
+
+
+          function generatePdf() {
+                const data = {
+                    prodNome: prodNome,
+                    qtdStockP: qtdStockP,
+                    quantUser: quantUser,
+                    _token: '{{ csrf_token() }}'
+                };
+
+                fetch("{{ route('gerarpdf') }}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'report.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                })
+                .catch(error => console.error('Error:', error));
+            }
             </script>
-      </div>           
+            
+      </div>  
+             
     </section>             
 </div>
 

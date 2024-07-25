@@ -14,7 +14,7 @@
             </a>
         </li>
         <li class="breadcrumb-item">
-            <a class="link-body-emphasis fw-semibold text-decoration-none" href="#">Venda</a>
+            <a class="link-body-emphasis fw-semibold text-decoration-none" href="#">Vendas</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
             Finalizar venda
