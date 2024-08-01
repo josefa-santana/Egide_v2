@@ -72,9 +72,7 @@
             </div>
         </div>
 
-        <div class="pagination justify-content-center">
-            {{ $products->onEachSide(1)->links() }}
-        </div>
+
     </div>
     @endif
 </div>

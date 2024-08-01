@@ -35,29 +35,27 @@
         @endif
         <!--  -->
         <div class="page-detail u-s-p-t-80">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
-                    @if ($hasImages)
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
+                        @if($product->images)
                         <a href="/product_images/{{ $product->images[0]->image }}"
                             data-standard="/product_images/{{ $product->images[0]->image }}">
                             <img width="350" src="/product_images/{{ $product->images[0]->image }}" alt="" />
                         </a>
-                    @else
-                        <p>Sem imagens adicionadas</p>
-                    @endif
-                </div>
-                <div class="thumbnails" style="margin-top: 30px">
-                    @if ($hasImages)
+                    </div>
+                    <div class="thumbnails" style="margin-top: 30px">
                         @foreach ($product->images as $product_image)
-                            <a href="/product_images/{{ $product_image->image }}"
-                                data-standard="/product_images/{{ $product_image->image }}">
-                                <img width="100" src="/product_images/{{ $product_image->image }}" alt="" />
-                            </a>
+                        <a href="/product_images/{{ $product_image->image }}"
+                            data-standard="/product_images/{{ $product_image->image }}">
+                            <img width="100" src="/product_images/{{ $product_image->image }}" alt="" />
+                        </a>
                         @endforeach
+                        </ul>
+                    </div>
                     @else
-                        <p>Sem imagens disponíveis</p>
+                    Sem imagens adicionadas
                     @endif
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
