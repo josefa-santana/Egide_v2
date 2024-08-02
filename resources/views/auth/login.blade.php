@@ -38,7 +38,7 @@
                         <form method="POST" action="{{ route('login') }}" class="main-form text-center">
                             @csrf
                             <picture>
-                            <img class="mb-4" src="..\public\assets\brand\user_logo.png" alt="" width="72" height="65">
+                            <i class="bi bi-explicit" style="font-size: 300%; color: #5337FF;"></i>
                             </picture>
 
 

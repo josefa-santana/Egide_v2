@@ -49,7 +49,7 @@
 
     <div class="card">
       <div class="card-content">
-        <div class="number">{{ $stock }}</div>
+        <div class="number">{{ $order }}</div>
         <div class="card-name">Vendas do ultimo mês</div>
       </div>
       <div class="icon-box">
@@ -59,11 +59,11 @@
 
     <div class="card">
       <div class="card-content">
-        <div class="number">42</div>
-        <div class="card-name">Ganhos totais</div>
+        <div class="number"> Laratrust</div>
+        <div class="card-name">Painel </div>
       </div>
       <div class="icon-box">
-        <i class="bi bi-currency-dollar"></i>
+      <a href="{{ url('admin/index-users') }}"> <i class="bi bi-gear"></i></a>
       </div>
     </div>
 

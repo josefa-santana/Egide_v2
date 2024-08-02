@@ -64,5 +64,5 @@
       </div>
     </div>
   </div>
-  {{ $roles->links('laratrust::panel.pagination') }}
+ 
 @endsection

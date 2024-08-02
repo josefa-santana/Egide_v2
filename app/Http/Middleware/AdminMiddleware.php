@@ -28,7 +28,7 @@ class AdminMiddleware
                 return redirect()->route('displayproducts');
             }
         } else {
-            return redirect('/welcome');
+            return redirect('displayproducts');
         }
         return $next($request);
     }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Image;
 use App\Models\Stock;
+use App\Models\OrderItem;
 
 class ProductController extends Controller
 {
@@ -88,19 +89,33 @@ class ProductController extends Controller
 
     }
 
-    public function DeleteProduct($id){
+    public function DeleteProduct($id)
+    {
+        // Encontre o produto pelo ID ou lance uma exceção se não for encontrado
         $product = Product::findOrFail($id);
-        if($product->images){
-            foreach($product->images as $image){
-                if(Image::exists($image->image)){
-                    unlink(public_path('product_images/'.$image->image));
+    
+        // Exclua as imagens associadas ao produto
+        if ($product->images) {
+            foreach ($product->images as $image) {
+                // Verifique se o arquivo existe antes de tentar excluí-lo
+                if (file_exists(public_path('product_images/' . $image->image))) {
+                    unlink(public_path('product_images/' . $image->image));
                     $image->delete();
                 }
             }
         }
+    
+        // Exclua os registros relacionados no estoque
         Stock::where('product_id', $id)->delete();
-
-        $product->findOrFail($id)->delete();
+    
+        // Exclua os registros relacionados em order_item
+        // Adicione a lógica para excluir os itens de pedido associados
+        OrderItem::where('product_id', $id)->delete();
+    
+        // Finalmente, exclua o produto
+        $product->delete();
+    
+        // Redirecione para a rota allproducts com uma mensagem de sucesso
         return redirect()->route('allproducts')->with('message', 'Produto removido com sucesso!');
     }
 
