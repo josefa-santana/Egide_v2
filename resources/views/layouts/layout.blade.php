@@ -143,7 +143,7 @@
                                 @foreach (auth()->user()->unReadnotifications as $notification)
 
                                 <li>
-                                    <li><hr class="dropdown-divider"></li>
+                                    
                                     <a class="dropdown-item" href="{{ route('readnotification', $notification->id) }}" data-id="{{$notification->id}}">{{$notification->data['data']}}  <span class="bi bi-x-square-fill" style="color: red"><span>
                                      
                                     </a>

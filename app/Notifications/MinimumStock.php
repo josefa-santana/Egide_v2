@@ -25,9 +25,8 @@ class MinimumStock extends Notification
         //
         $this->array_id = $array["id"];
         $this->array_name = $array["name"];
-     
+        $this->array_status = $array['status'];
 
-  
     }
 
     /**
@@ -65,10 +64,9 @@ class MinimumStock extends Notification
     {
   
         return [
-           # dd($this),
-            
 
-            'data' => 'Produto '. $this->array_name. ' está com estoque baixo.',
+            'data' => 'Produto '. $this->array_name. ' está com estoque ' . ($this->array_status == 'esgotado' ? 'esgotado' : 'baixo') . '.',
         ];
+        
     }
 }

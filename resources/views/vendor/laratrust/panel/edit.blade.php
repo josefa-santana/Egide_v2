@@ -1,6 +1,6 @@
 @extends('laratrust::panel.layout')
 
-@section('title', $model ? "Edit {$type}" : "New {$type}")
+@section('title', $model ? "Editar {$type}" : "Nova {$type}")
 
 @section('content')
   <div>
@@ -19,7 +19,7 @@
           @method('PUT')
         @endif
         <label class="block">
-          <span class="text-gray-700">Name/Code</span>
+          <span class="text-gray-700">Nome/Code</span>
           <input
             class="form-input mt-1 block w-full bg-gray-200 text-gray-600 @error('name') border-red-500 @enderror"
             name="name"
@@ -34,7 +34,7 @@
         </label>
 
         <label class="block my-4">
-          <span class="text-gray-700">Display Name</span>
+          <span class="text-gray-700">Nome de apresentação</span>
           <input
             class="form-input mt-1 block w-full"
             name="display_name"
@@ -45,7 +45,7 @@
         </label>
 
         <label class="block my-4">
-          <span class="text-gray-700">Description</span>
+          <span class="text-gray-700">Descrição</span>
           <textarea
             class="form-textarea mt-1 block w-full"
             rows="3"
@@ -54,7 +54,7 @@
           >{{ $model->description ?? old('description') }}</textarea>
         </label>
         @if($type == 'role')
-          <span class="block text-gray-700">Permissions</span>
+          <span class="block text-gray-700">Permissões</span>
           <div class="flex flex-wrap justify-start mb-4">
             @foreach ($permissions as $permission)
               <label class="inline-flex items-center mr-6 my-2 text-sm" style="flex: 1 0 20%;">
@@ -75,9 +75,9 @@
             href="{{route("laratrust.{$type}s.index")}}"
             class="btn btn-red mr-4"
           >
-            Cancel
+            Cancelar
           </a>
-          <button class="btn btn-blue" type="submit">Save</button>
+          <button class="btn btn-blue" type="submit">Salvar</button>
         </div>
       </form>
     </div>

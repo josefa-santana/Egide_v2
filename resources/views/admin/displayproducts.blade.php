@@ -3,6 +3,14 @@
 @section('subtitulo', 'Adicionar produto')
 @section('content')
 
+<style>
+        .pagination .page-item.active .page-link{
+            background-color: #5337FF ; /* Cor de fundo personalizada */
+            border-color: #5337FF; /* Cor da borda personalizada */
+            color: #fff; /* Cor do texto personalizada */
+        }
+    </style>
+
 <!-- BREADSCRUMBS -->
 
 <nav aria-label="breadcrumb">
@@ -74,7 +82,11 @@
 
     </div>
     @endif
+    <div class="d-flex justify-content-center">
+            {{ $products->links() }}
+        </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
     integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async>

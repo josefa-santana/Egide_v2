@@ -60,7 +60,9 @@
             </tbody>
           </table>
         </div>
-
+        @if ($modelKey)
+          {{ $users->appends(['model' => $modelKey])->links('laratrust::panel.pagination') }}
+        @endif
 
 
       </div>

@@ -116,7 +116,7 @@ Route::prefix('user')->middleware('auth')->group(function(){
     Route::controller(StockController::class)->group(function(){
         Route::get('/readnotification/{id}', 'markAsReadNotification')->name('readnotification');
         Route::post('/notificationMinimumStock', 'notificationMinimumStock')->name('notificationMinimumStock');
-
+        Route::post('/finish-sale', 'FinishSale')->name('finishsale');
     });
 
         

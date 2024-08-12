@@ -25,6 +25,8 @@
   <button class="btn btn-success btn-lg" onclick="generatePdf()">Gerar PDF</button>  
 
 
+
+
   <div class="cards">
     <div class="card">
       <div class="card-content">
@@ -44,13 +46,12 @@
       <div class="icon-box">
         <i class="bi bi-people"></i>
       </div>
-      <a href="{{ url('admin/index-users') }}">Mais informações <i class="bi bi-arrow-right"></i></a>
     </div>
 
     <div class="card">
       <div class="card-content">
         <div class="number">{{ $order }}</div>
-        <div class="card-name">Vendas do ultimo mês</div>
+        <div class="card-name">Vendas realizadas</div>
       </div>
       <div class="icon-box">
         <i class="bi bi-cart-check"></i>
@@ -95,7 +96,17 @@
                           borderColor: [],
                           borderWidth: 1
                       }]
-              }
+              },
+              options: {
+                        scales:{
+                          yAxes: [{
+                            ticks: {
+                              beginAtZero: true,
+                              stepSize: 5
+                            }
+                          }]
+                        }
+                      }
               });
           }, true);
 

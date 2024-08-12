@@ -1,6 +1,6 @@
 @extends('laratrust::panel.layout')
 
-@section('title', "Role details")
+@section('title', "Detalhes de Função")
 
 @section('content')
   <div>
@@ -11,20 +11,20 @@
         class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200 p-8"
       >
         <label class="flex justify-between w-4/12">
-          <span class="text-gray-900 font-bold">Name/Code:</span>
+          <span class="text-gray-900 font-bold">Nome/Code:</span>
           <span class="ml-4 text-gray-800">{{$role->name}}</span>
         </label>
 
         <label class="flex justify-between w-4/12 my-4">
-          <span class="text-gray-900 font-bold">Display Name:</span>
+          <span class="text-gray-900 font-bold">Nome de apresentação:</span>
           <span class="ml-4 text-gray-800">{{$role->display_name}}</span>
         </label>
 
         <label class="flex justify-between w-4/12 my-4">
-          <span class="text-gray-900 font-bold">Description:</span>
+          <span class="text-gray-900 font-bold">Descrição:</span>
           <span class="ml-4 text-gray-800">{{$role->description}}</span>
         </label>
-        <span class="text-gray-900 font-bold">Permissions:</span>
+        <span class="text-gray-900 font-bold">Permissões:</span>
         <ul class="grid grid-cols-1 md:grid-cols-4 list-inside">
           @foreach ($role->permissions as $permission)
             <li class="text-gray-800 list-disc" >{{$permission->display_name ?? $permission->name}}</li>
@@ -35,7 +35,7 @@
             href="{{route("laratrust.roles.index")}}"
             class="text-blue-600 hover:text-blue-900"
           >
-            Back
+            Voltar
           </a>
         </div>
       </form>

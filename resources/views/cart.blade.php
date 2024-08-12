@@ -59,20 +59,18 @@ use MercadoPago\SDK;
 <!---->
 
 <div class="page-content">
-
-    <!-- ERRORS MESSAGE -->
-    @if($message = Session::get('message'))
-    <div class="alert alert-success">
-        {{ session()->get('message'); }}
+    <!-- ERROR MESSAGES -->
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
     </div>
     @endif
+    <!---->
 
-    @if($message = Session::get('warning'))
-    <div class="alert alert-warning">
-        {{ session()->get('warning'); }}
-    </div>
-    @endif
-    <!--  -->
 
     @if ($items->count() == 0) 
 
@@ -95,17 +93,7 @@ use MercadoPago\SDK;
             </tr>
         </thead>
         <tbody>
-            @foreach ($products as $product)
-            @if($product->stock->quantidade == 0)
-                    <p>Sem estoque</p>
-
-            @endif
-            @endforeach
-        
-            @foreach ($items as $item)
-
-                    
-                
+            @foreach ($items as $item) 
                     <tr>
                         <th scope="row">{{ $item->id }}</th>
                         <td>{{ $item->name }}</td>

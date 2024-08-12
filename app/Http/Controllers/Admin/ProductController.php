@@ -38,7 +38,7 @@ class ProductController extends Controller
         $new_product = Product::create($data);
 
         $stock = $request->validate([
-            'quantidade' => 'required'
+            'quantidade' => 'required|integer'
         ]);
 
         $new_stock = Stock::create(['product_id'=>$new_product->id, 'quantidade'=>$stock['quantidade']]);
@@ -57,7 +57,7 @@ class ProductController extends Controller
     }
 
     public function ShowProducts(){
-        $products = Product::paginate(10);
+        $products = Product::where('is_active', true)->get();
         $stock = Stock::all();
         return view('admin.allproducts', compact('products', 'stock'));
     }
@@ -110,10 +110,11 @@ class ProductController extends Controller
     
         // Exclua os registros relacionados em order_item
         // Adicione a lógica para excluir os itens de pedido associados
-        OrderItem::where('product_id', $id)->delete();
+      #  OrderItem::where('product_id', $id)->delete();
     
         // Finalmente, exclua o produto
-        $product->delete();
+        $product->is_active = false;
+        $product->save();
     
         // Redirecione para a rota allproducts com uma mensagem de sucesso
         return redirect()->route('allproducts')->with('message', 'Produto removido com sucesso!');
@@ -156,7 +157,8 @@ class ProductController extends Controller
     public function SearchProducts(Request $request) {
         $search = $request->search;
 
-        $products = Product::where(function($query) use ($search){
+        $products = Product::where('is_active', true)
+        ->where(function($query) use ($search){
             $query->where('nome', 'like', "%$search%")
             ->orWhere('descricao', 'like', "%$search%")
             ->orWhere('id', 'like', "%$search%");

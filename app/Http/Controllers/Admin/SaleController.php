@@ -14,7 +14,9 @@ class SaleController extends Controller
     //
     public function Index(){
         // Obtém todos os produtos
-        $products = Product::with('images')->get();
+        $products = Product::with('images')
+        ->where('is_active', true)
+        ->paginate(1);
     
         // Verifica se há produtos
         $hasProducts = $products->isNotEmpty();

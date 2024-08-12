@@ -25,15 +25,17 @@
 
 <div class="page-content">
     <div class="container">
-   
+    @if (session('orderDetails'))
+        @php
+            $orderDetails = session('orderDetails');
+        @endphp
           <div class="py-5 text-center">
             <span class="d-block mx-auto mb-4 bi bi-check-circle" style="font-size: 70px; color: green;"></span>
+            
             <h2>Pedido realizado com sucesso</h2>
             <p class="lead">Detalhes da compra</p>
- 
-
+            
           <div class="row g-5">
-
             <table class="table">
               <thead>
                   <tr>
@@ -45,20 +47,18 @@
                   </tr>
               </thead>
               <tbody>
-              
-                  @foreach ($items as $item)
-                      
-                          <tr>
-                              <td>{{ $item->name }}</td>
-                              <td>R$ {{ number_format($item->price, 2, ',' , '.') }}</td>
-      
-                              <td>{{ $item->quantity }}</td>
-      
-      
-                          </tr>
-                      @endforeach
-                  </tbody>
-                  <h5>Valor total: R$ {{ number_format(\Cart::getTotal(), 2, ',', '.') }}</h5>
+
+
+                <tr>
+                @foreach ($orderDetails['items'] as $item)
+                    <tr>
+                        <td>{{ $item['nome'] }}</td>
+                        <td>R$ {{ number_format($item['preco'], 2, ',', '.') }}</td>
+                        <td>{{ $item['quantidade'] }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        
               </table>
 
           </div>
@@ -70,8 +70,11 @@
               </div>
           </div>
           <br>
-          <br>
 
+         <p>Total: R$ {{ number_format($orderDetails['total'], 2, ',', '.') }}</p>
+         
+          <br>
+          @endif
     </div>
 </div>
 @endsection
